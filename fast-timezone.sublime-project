@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+  "tab_size": 2,
+  "trim_trailing_white_space_on_save": true,
+  "translate_spaces_to_tabs": true
+}

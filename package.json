@@ -1,0 +1,40 @@
+{
+  "name": "fast-timezone",
+  "version": "0.1.0",
+  "description": "Fast timezone lookup service.",
+  "author": "Arne Seib <arne.seib@windy.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/windycom/fast-timezone/blob/master/README.md",
+  "keywords": [
+    "time zone",
+    "timezone",
+    "coordinates",
+    "longitude",
+    "latitude",
+    "nautical"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windycom/fast-timezone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/windycom/fast-timezone/issues"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "postinstall": "node postinstall.js",
+    "update": "node update.js"
+  },
+  "config": {
+    "tbbUrl": "https://github.com/evansiroky/timezone-boundary-builder/releases/download/2017c/timezones.geojson.zip",
+    "dataPath": "data"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "chalk": "^2.3.2",
+    "extract-zip": "^1.6.6",
+    "fs-extra": "^5.0.0",
+    "moment-timezone": "^0.5.14",
+    "which-polygon": "github:mapbox/which-polygon"
+  }
+}
