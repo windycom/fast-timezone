@@ -9,29 +9,15 @@
 const os = require('os');
 const Fs = require('fs-extra');
 const Path = require('path');
-const zlib = require('zlib');
 const { promisify } = require('util');
 const chalk = require('chalk');
 const axios = require('axios');
 const extract = promisify(require('extract-zip'));
 const { config } = require('../package.json');
-
-// data path from config
-const dataPath = Path.resolve(Path.join(__dirname, '..'), config.dataPath);
-
-// Data file
-const dataFile = Path.join(dataPath, 'tzdata.json');
+const { dataFile,	waitEvent } = require('./utils');
 
 // temp path
 const tmp = Path.join(os.tmpdir(), 'fast-timezone');
-
-//------------------------------------------------------------------------------
-// Wait for event `endEvent` to occur on `obj` and resolve the promise.
-// Also check for error events, which will reject the promise.
-const waitEvent = (obj, endEvent = 'end') => new Promise((resolve, reject) => {
-	obj.once(endEvent, resolve);
-	obj.once('error', reject);
-});
 
 //------------------------------------------------------------------------------
 // Download a file via axios. Downloads to tmp folder and uses the original
@@ -110,17 +96,6 @@ const ensureFolders = async () => {
 };
 
 //------------------------------------------------------------------------------
-// Make sure the tmp and data folders exist.
-const extractTzData = async () => {
-	process.stdout.write('Extracting tzdata.json...');
-	const gzip = zlib.createGunzip();
-	const out = Fs.createWriteStream(dataFile);
-	Fs.createReadStream(`${dataFile}.gz`).pipe(gzip).pipe(out);
-	await waitEvent(out, 'close');
-	console.log(chalk.greenBright(' OK'));
-};
-
-//------------------------------------------------------------------------------
 // Main: Download / extract data files and store in `data`.
 module.exports = async (force = false) => {
 	await ensureFolders();
@@ -132,7 +107,3 @@ module.exports = async (force = false) => {
 	await Fs.remove(tmp);
 	console.log(chalk.greenBright(` OK`));
 };
-
-module.exports.dataFile = dataFile;
-module.exports.dataPath = dataPath;
-module.exports.extractTzData = extractTzData;

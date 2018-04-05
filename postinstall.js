@@ -8,11 +8,23 @@
 
 const Fs = require('fs-extra');
 const chalk = require('chalk');
-const download = require('./src/download');
+const zlib = require('zlib');
+const { dataFile,	waitEvent } = require('./src/utils');
 
 //------------------------------------------------------------------------------
-if (!Fs.existsSync(download.dataFile)) {
-	download.extractTzData().catch(error => {
+// Make sure the tmp and data folders exist.
+const extractTzData = async () => {
+	process.stdout.write('Extracting tzdata.json...');
+	const gzip = zlib.createGunzip();
+	const out = Fs.createWriteStream(dataFile);
+	Fs.createReadStream(`${dataFile}.gz`).pipe(gzip).pipe(out);
+	await waitEvent(out, 'close');
+	console.log(chalk.greenBright(' OK'));
+};
+
+//------------------------------------------------------------------------------
+if (!Fs.existsSync(dataFile)) {
+	extractTzData().catch(error => {
 		console.error(chalk.red(' ✗'));
 		console.error(error.message);
 		process.exit(1);
