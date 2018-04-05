@@ -1,6 +1,6 @@
 # fast-timezone
 
-Timezone lookup service.
+Timezone lookup.
 
 ## Credits
 
@@ -9,15 +9,12 @@ awesome libraries and data. So feel free to direct a considerable part of your
 admiration to these projects:
 
 ### [timezone-boundary-builder](https://github.com/evansiroky/timezone-boundary-builder)
-
 The timezone polygons are taken from there.
 
 ### [which-polygon](https://github.com/mapbox/which-polygon)
-
 Used to find a timezone via latitude / longitude.
 
 ### [moment-timezone](https://momentjs.com/timezone/)
-
 And finally there is moment-timezone to calculate the actual offset for a given
 timezone name.
 
@@ -38,14 +35,8 @@ longitude, in case no territorial timezone is found for a given location.
 ## Installation
 
 ```bash
-npm i windycom/fast-timezone
+npm i fast-timezone
 ```
-
-Preferably, install via `npm`. There is a postinstall script, that downloads
-the latest data and creates the timezone data file.
-
-You can also run the download script manually via `npm run update` or `node update`
-if you want to update/restore the datafile.
 
 ## Usage
 
@@ -59,7 +50,7 @@ await getTimezone.init();
 const zone = getTimezone(50.047, 14.435);
 ```
 
-In case a timezone is found (which is the case if the arguments are valid), an object is returned:
+In case a timezone is found (which is always the case if the arguments are valid), an object is returned:
 
 ```JSON
 {
@@ -94,4 +85,4 @@ This software is licenced under the [MIT](https://opensource.org/licenses/MIT) l
 
 The included `data/tzdata.json` is derived from [timezone-boundary-builder](https://github.com/evansiroky/timezone-boundary-builder), thus licensed under the [Open Database License](data/ODbLicense.txt).
 
-The included `data/ne_10m_time_zones.geojson` is taken from [Natural Earth](https://github.com/nvkelso/natural-earth-vector), and is in the [public domain](data/License-NaturalEarth.md).
+The included `data/ne_10m_time_zones.geojson` is taken from [Natural Earth](https://github.com/nvkelso/natural-earth-vector), and is in the [public domain](https://github.com/nvkelso/natural-earth-vector/blob/master/LICENSE.md).
