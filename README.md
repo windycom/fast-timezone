@@ -88,6 +88,10 @@ is the zone designator according to ISO 8601.
 
 In case no timezone can be found, `null` is returned.
 
-## License
+## Licenses
 
 This software is licenced under the [MIT](https://opensource.org/licenses/MIT) license.
+
+The included `data/tzdata.json` is derived from [timezone-boundary-builder](https://github.com/evansiroky/timezone-boundary-builder), thus licensed under the [Open Database License](data/ODbLicense.txt).
+
+The included `data/ne_10m_time_zones.geojson` is taken from [Natural Earth](https://github.com/nvkelso/natural-earth-vector), and is in the [public domain](data/License-NaturalEarth.md).

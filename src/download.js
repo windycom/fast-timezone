@@ -9,6 +9,7 @@
 const os = require('os');
 const Fs = require('fs-extra');
 const Path = require('path');
+const zlib = require('zlib');
 const { promisify } = require('util');
 const chalk = require('chalk');
 const axios = require('axios');
@@ -109,6 +110,17 @@ const ensureFolders = async () => {
 };
 
 //------------------------------------------------------------------------------
+// Make sure the tmp and data folders exist.
+const extractTzData = async () => {
+	process.stdout.write('Extracting tzdata.json...');
+	const gzip = zlib.createGunzip();
+	const out = Fs.createWriteStream(dataFile);
+	Fs.createReadStream(`${dataFile}.gz`).pipe(gzip).pipe(out);
+	await waitEvent(out, 'close');
+	console.log(chalk.greenBright(' OK'));
+};
+
+//------------------------------------------------------------------------------
 // Main: Download / extract data files and store in `data`.
 module.exports = async (force = false) => {
 	await ensureFolders();
@@ -123,3 +135,4 @@ module.exports = async (force = false) => {
 
 module.exports.dataFile = dataFile;
 module.exports.dataPath = dataPath;
+module.exports.extractTzData = extractTzData;

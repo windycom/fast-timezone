@@ -23,18 +23,24 @@
   "main": "src/index.js",
   "scripts": {
     "postinstall": "node postinstall.js",
-    "update": "node update.js"
+    "update": "node update.js",
+    "test": "mocha test --reporter mochawesome"
   },
   "config": {
     "tbbUrl": "https://github.com/evansiroky/timezone-boundary-builder/releases/download/2017c/timezones.geojson.zip",
     "dataPath": "data"
   },
   "dependencies": {
-    "axios": "^0.18.0",
-    "chalk": "^2.3.2",
-    "extract-zip": "^1.6.6",
     "fs-extra": "^5.0.0",
     "moment-timezone": "^0.5.14",
     "which-polygon": "github:mapbox/which-polygon"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "chai": "^4.1.2",
+    "chalk": "^2.3.2",
+    "extract-zip": "^1.6.6",
+    "mocha": "^5.0.5",
+    "mochawesome": "^3.0.2"
   }
 }

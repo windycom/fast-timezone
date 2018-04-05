@@ -92,6 +92,10 @@ const getTimezone = (lat, lng) => {
 		return getTimezoneByName(name);
 	}
 	// not found, so use nautical zones
+	// Check values, catch also NaN
+	if (!((lat >= -90) && (lat <= 90) && (lng >= -180) && (lng <= 180))) {
+		return null;
+	}
 	const offset = getOffset(lng);
 	const result = nauticalZones.get(offset);
 	return result ? {

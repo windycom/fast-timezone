@@ -63,5 +63,9 @@ typings/
 # Local configuration files
 *.local.*
 
-# Data files
-/data/
+# Extracted data files
+/data/tzdata.json
+/data/ne_10m_time_zones.geojson
+
+# Test results
+/mochawesome-report/
