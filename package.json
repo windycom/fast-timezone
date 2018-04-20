@@ -1,0 +1,52 @@
+{
+  "name": "fast-timezone",
+  "version": "1.0.0",
+  "description": "Fast timezone lookup service.",
+  "keywords": [
+    "time zone",
+    "timezone",
+    "coordinates",
+    "longitude",
+    "latitude",
+    "nautical"
+  ],
+  "author": [
+    "Evan Siroky",
+    "Arne Seib <arne.seib@windy.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/windycom/fast-timezone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/windycom/fast-timezone/issues"
+  },
+  "homepage": "https://github.com/windycom/fast-timezone#readme",
+  "engines": {
+    "node": ">=7"
+  },
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "node scripts/unzip-data.js"
+  },
+  "devDependencies": {
+    "async": "^2.1.5",
+    "follow-redirects": "^1.2.1",
+    "jsts": "^1.3.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "nock": "^9.0.9",
+    "rimraf": "^2.6.1",
+    "yazl": "^2.4.3"
+  },
+  "dependencies": {
+    "@turf/boolean-point-in-polygon": "^6.0.1",
+    "@turf/helpers": "^6.1.3",
+    "fs-extra": "^5.0.0",
+    "geobuf": "^3.0.0",
+    "moment-timezone": "^0.5.15",
+    "pbf": "^3.0.5",
+    "yauzl": "^2.9.1"
+  }
+}
