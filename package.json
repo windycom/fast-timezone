@@ -1,6 +1,6 @@
 {
   "name": "fast-timezone",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Fast timezone lookup service.",
   "keywords": [
     "time zone",
@@ -10,10 +10,7 @@
     "latitude",
     "nautical"
   ],
-  "author": [
-    "Evan Siroky",
-    "Arne Seib <arne.seib@windy.com>"
-  ],
+  "author": "Evan Siroky, Arne Seib <arne.seib@windy.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
