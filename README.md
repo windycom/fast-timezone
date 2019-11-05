@@ -1,3 +1,7 @@
+# DEPRECATED
+
+**Since November 2018 Evan Siroky's [geo-tz](https://github.com/evansiroky/node-geo-tz/) supports `preCache` method. Therefore, this package is no longer maintained.**
+
 # fast-timezone
 
 Timezone lookup service.
